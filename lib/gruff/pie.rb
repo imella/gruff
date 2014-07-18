@@ -67,7 +67,8 @@ class Gruff::Pie < Gruff::Base
         label_val = ((data_row[DATA_VALUES_INDEX].first / total_sum) * 100.0).round
         unless label_val < @hide_labels_less_than
           # RMagick must use sprintf with the string and % has special significance.
-          label_string = label_val.to_s + '% hola'
+          data_label = data_row[DATA_LABEL_INDEX][0..18]
+          label_string = "#{data_label} #{label_val.to_s}%"
           @d = draw_label(center_x,center_y, half_angle,
                           radius + (radius * @text_offset_percentage),
                           label_string)
