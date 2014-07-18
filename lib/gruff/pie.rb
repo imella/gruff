@@ -53,7 +53,6 @@ class Gruff::Pie < Gruff::Base
         @d = @d.stroke data_row[DATA_COLOR_INDEX]
         @d = @d.fill 'transparent'
         @d.stroke_width(radius) # stroke width should be equal to radius. we'll draw centered on (radius / 2)
-
         current_degrees = (data_row[DATA_VALUES_INDEX].first / total_sum) * 360.0 
 
         # ellipse will draw the the stroke centered on the first two parameters offset by the second two.
@@ -68,7 +67,7 @@ class Gruff::Pie < Gruff::Base
         label_val = ((data_row[DATA_VALUES_INDEX].first / total_sum) * 100.0).round
         unless label_val < @hide_labels_less_than
           # RMagick must use sprintf with the string and % has special significance.
-          label_string = label_val.to_s + '%'
+          label_string = label_val.to_s + '% hola'
           @d = draw_label(center_x,center_y, half_angle,
                           radius + (radius * @text_offset_percentage),
                           label_string)
