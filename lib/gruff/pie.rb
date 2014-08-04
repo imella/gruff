@@ -68,7 +68,7 @@ class Gruff::Pie < Gruff::Base
         unless label_val < @hide_labels_less_than
           # RMagick must use sprintf with the string and % has special significance.
           data_label = data_row[DATA_LABEL_INDEX][0..18]
-          label_string = "#{data_label} #{label_val.to_s}%"
+          label_string = "#{data_label}\n#{label_val.to_s}%"
           @d = draw_label(center_x,center_y, half_angle,
                           radius + (radius * @text_offset_percentage),
                           label_string)
@@ -103,7 +103,7 @@ private
     @d.font = @font if @font
     @d.pointsize = scale_fontsize(@marker_font_size)
     @d.stroke = 'transparent'
-    @d.font_weight = BoldWeight
+    @d.font_weight = NormalWeight
     @d.gravity = CenterGravity
     @d.annotate_scaled( @base_image, 
                       0, 0,
